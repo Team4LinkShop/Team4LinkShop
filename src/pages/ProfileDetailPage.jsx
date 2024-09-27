@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import bgMarketRoof from '../assets/bg-market-roof.svg';
-import icLeftArrow from '../assets/ic-left-arrow.svg';
-import icHeartBlank from '../assets/ic-blank-heart.svg';
-import icShare from '../assets/ic-share.svg';
-import icMeatBall from '../assets/ic-meatball.svg';
-import mockProfileImg from '../assets/mock-profile-img.jpg';
+import bgMarketRoof from '../assets/images/bg-market-roof.svg';
+import icLeftArrow from '../assets/images/ic-left-arrow.svg';
+import icHeartBlank from '../assets/images/ic-blank-heart.svg';
+import icShare from '../assets/images/ic-share.svg';
+import icMeatBall from '../assets/images/ic-meatball.svg';
+import mockProfileImg from '../assets/images/mock-profile-img.jpg';
 
 function ProfileDetailPage() {
   return (
