@@ -13,3 +13,5 @@ function ShopList() {
     </div>
   );
 }
+
+export default ShopList;
