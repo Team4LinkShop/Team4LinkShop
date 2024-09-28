@@ -1,3 +1,6 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+
 function Logo() {
   return (
     <div css={containerLogo}>
@@ -6,4 +9,7 @@ function Logo() {
   );
 }
 
+const containerLogo = css`
+border:0;
+`;
 export default Logo;

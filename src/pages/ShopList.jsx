@@ -14,4 +14,7 @@ function ShopList() {
   );
 }
 
+const containerHeader = css `
+border: 0;
+`;
 export default ShopList;
