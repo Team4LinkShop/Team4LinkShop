@@ -1,5 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import Logo from '../components/common/Logo';
+import BtnCreate from '../components/common/BtnCreate';
 
 function ShopList() {
   return (
