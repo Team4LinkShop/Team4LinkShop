@@ -2,10 +2,10 @@
 import { css } from '@emotion/react';
 import bgMarketRoof from '../assets/images/bg-market-roof.svg';
 import icLeftArrow from '../assets/images/ic-left-arrow.svg';
-import icHeartBlank from '../assets/images/ic-blank-heart.svg';
-import icShare from '../assets/images/ic-share.svg';
 import icMeatBall from '../assets/images/ic-meatball.svg';
+import icShare from '../assets/images/ic-share.svg';
 import mockProfileImg from '../assets/images/mock-profile-img.jpg';
+import LikeButton from '../components/likeButton';
 
 function ProfileDetailPage() {
   return (
@@ -29,10 +29,7 @@ function ProfileDetailPage() {
             margin-bottom: 3.2rem;
           `}>
           <div css={containerIcon}>
-            <div css={icContainerHeart}>
-              <img src={icHeartBlank} alt="좋아요 아이콘" />
-              <span>65</span>
-            </div>
+            <LikeButton linkShopId={12} />
             <div css={icContainerShareMore}>
               <img src={icShare} alt="공유하기 아이콘" />
               <img src={icMeatBall} alt="더보기 아이콘" />
