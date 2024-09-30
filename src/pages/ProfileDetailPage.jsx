@@ -3,10 +3,9 @@ import { css } from '@emotion/react';
 import bgMarketRoof from '../assets/images/bg-market-roof.svg';
 import icLeftArrow from '../assets/images/ic-left-arrow.svg';
 import mockProfileImg from '../assets/images/mock-profile-img.jpg';
-import LikeButton from '../components/likeButton';
+import LikeButton from '../components/LikeButton';
 import ShareButton from '../components/ShareButton';
-function ProfileDetailPage({linkShopId}) {
-  
+function ProfileDetailPage({ linkShopId }) {
   return (
     <div>
       <div css={marketBg} />
@@ -286,8 +285,6 @@ const icContainerHeart = css`
     color: #14151a;
   }
 `;
-
-
 
 const containerIcon = css`
   display: flex;
