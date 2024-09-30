@@ -1,9 +1,14 @@
+import React from 'react';
+import { Name, Id, Password } from './components/common/userinfor.jsx';
 
 function App() {
   return (
     <>
-      
-      <h1>hello</h1>
+      <div>
+        <Name />
+        <Id />
+        <Password />
+      </div>
     </>
   );
 }
