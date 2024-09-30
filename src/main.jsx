@@ -13,8 +13,13 @@ createRoot(document.getElementById('root')).render(
         html, body {
           padding: 0;
           margin: 0;
+          box-sizing: border-box;
           font-family: 'Pretendard', sans-serif;
           font-size: 62.5%;
+        }
+        p {
+          margin: 0;
+          padding: 0;
         }
       `}
     />
