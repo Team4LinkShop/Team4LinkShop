@@ -4,6 +4,7 @@ import bgMarketRoof from '../assets/images/bg-market-roof.svg';
 import icLeftArrow from '../assets/images/ic-left-arrow.svg';
 import mockProfileImg from '../assets/images/mock-profile-img.jpg';
 import LikeButton from '../components/LikeButton';
+import MeatballButton from '../components/MeatballButton';
 import ShareButton from '../components/ShareButton';
 function ProfileDetailPage({ linkShopId }) {
   return (
@@ -28,7 +29,14 @@ function ProfileDetailPage({ linkShopId }) {
           `}>
           <div css={containerIcon}>
             <LikeButton linkShopId={linkShopId} />
-            <ShareButton linkShopId={linkShopId} />
+            <div
+              css={css`
+                display: flex;
+                gap: 1.6rem;
+              `}>
+              <ShareButton linkShopId={linkShopId} />
+              <MeatballButton />
+            </div>
           </div>
           <div css={containerProfile}>
             <figure>
