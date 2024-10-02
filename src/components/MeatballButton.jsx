@@ -3,6 +3,8 @@
 import { useRef, useState } from 'react';
 import icMeatBall from '../assets/images/ic-meatball.svg';
 import { icContainer } from './ShareButton';
+import ProfileDropDown from './ProfileDropDown';
+import { css } from '@emotion/react';
 
 function MeatballButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,15 +19,16 @@ function MeatballButton() {
 
   return (
     <>
-      <div ref={menu} css={icContainer} onClick={() => setIsOpen(!isOpen)}>
+      <div
+        ref={menu}
+        css={css`
+          ${icContainer};
+          position: relative;
+        `}
+        onClick={() => setIsOpen(!isOpen)}>
         <img src={icMeatBall} alt="더보기 아이콘" />
+        {isOpen && <ProfileDropDown />}
       </div>
-      {isOpen && (
-        <ul>
-          <li>수정하기</li>
-          <li>삭제하기</li>
-        </ul>
-      )}
     </>
   );
 }
