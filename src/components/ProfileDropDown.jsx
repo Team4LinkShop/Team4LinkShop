@@ -1,12 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useState } from 'react';
 
-function ProfileDropDown() {
+function ProfileDropDown({ onEditClick }) {
   return (
-    <ul css={dropDownContainer}>
-      <li>수정하기</li>
-      <li>삭제하기</li>
-    </ul>
+    <>
+      <ul css={dropDownContainer}>
+        <li onClick={onEditClick}>수정하기</li>
+        <li>삭제하기</li>
+      </ul>
+    </>
   );
 }
 
@@ -21,6 +24,7 @@ const dropDownContainer = css`
   text-align: center;
   box-shadow: 0 0.4rem 1.6rem 0 rgba(17, 34, 17, 0.05);
   border-radius: 0.6rem;
+  z-index: 1;
 
   > li {
     padding: 1.8rem 4.6rem;
