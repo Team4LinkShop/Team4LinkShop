@@ -48,10 +48,11 @@ function MeatballButton() {
 
       {/* 비밀번호 입력 모달창 */}
       {isModalOpen && (
-        <div css={modalStyle}>
-          <div css={modalContentStyle}>
+        <div css={modalStyle} onClick={closeModal}>
+          <div css={modalContentStyle} onClick={(e) => e.stopPropagation()}>
             <h2>비밀번호 입력</h2>
             <input type="password" placeholder="비밀번호를 입력하세요" />
+            <button>편집</button>
             <button onClick={closeModal}>닫기</button>
           </div>
         </div>
@@ -60,7 +61,6 @@ function MeatballButton() {
   );
 }
 
-// 모달 CSS 스타일 (Emotion 사용)
 const modalStyle = css`
   position: fixed;
   top: 0;
@@ -71,7 +71,7 @@ const modalStyle = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* 모달이 다른 요소 위에 나타나도록 설정 */
+  z-index: 1000;
 `;
 
 const modalContentStyle = css`
