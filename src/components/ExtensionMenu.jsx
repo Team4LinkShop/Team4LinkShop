@@ -6,9 +6,10 @@ import { icContainer } from './ShareButton';
 import ProfileDropDown from './ProfileDropDown';
 import { css } from '@emotion/react';
 
-function MeatballButton() {
+function ExtensionMenu() {
   const [isDropMenuOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
 
   const menu = useRef(null);
 
@@ -33,6 +34,14 @@ function MeatballButton() {
     setIsModalOpen(false);
   };
 
+  const onChangePassword = (e) => {
+    setPasswordInput(e.target.value);
+  };
+
+  const goToEditPage = () => {
+    
+  }
+
   return (
     <>
       <div
@@ -51,8 +60,12 @@ function MeatballButton() {
         <div css={modalStyle} onClick={closeModal}>
           <div css={modalContentStyle} onClick={(e) => e.stopPropagation()}>
             <h2>비밀번호 입력</h2>
-            <input type="password" placeholder="비밀번호를 입력하세요" />
-            <button>편집</button>
+            <input
+              type="password"
+              placeholder="비밀번호를 입력하세요"
+              onChange={onChangePassword}
+            />
+            <button onClick={() => console.log(passwordInput)}>편집</button>
             <button onClick={closeModal}>닫기</button>
           </div>
         </div>
@@ -82,4 +95,4 @@ const modalContentStyle = css`
   text-align: center;
 `;
 
-export default MeatballButton;
+export default ExtensionMenu;
