@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import Logo from '../components/common/Logo';
-import BtnCreate from '../components/common/BtnCreate';
+import CreateButton from '../components/common/CreateButton';
 
 function ShopList() {
   return (
     <div>
       <div css={containerHeader}>
         <Logo />
-        <BtnCreate />
+        <CreateButton />
       </div>
       <div css={containerSearch}></div>
       <div css={containerDetailFilter}></div>
