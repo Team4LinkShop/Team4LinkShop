@@ -3,10 +3,19 @@ import { css } from '@emotion/react';
 import bgMarketRoof from '../assets/images/bg-market-roof.svg';
 import icLeftArrow from '../assets/images/ic-left-arrow.svg';
 import mockProfileImg from '../assets/images/mock-profile-img.jpg';
+import ExtensionMenu from '../components/ExtensionMenu';
 import LikeButton from '../components/LikeButton';
-import MeatballButton from '../components/MeatballButton';
 import ShareButton from '../components/ShareButton';
+import { useEffect, useState } from 'react';
+import { getLinkShop } from '../api/link-shop';
+
 function ProfileDetailPage({ linkShopId }) {
+  const [linkShopInfo, setLinkShopInfo] = useState();
+
+  useEffect(() => {
+    (async () => setLinkShopInfo(await getLinkShop(linkShopId)))();
+  }, []);
+
   return (
     <div>
       <div css={marketBg} />
@@ -35,7 +44,7 @@ function ProfileDetailPage({ linkShopId }) {
                 gap: 1.6rem;
               `}>
               <ShareButton linkShopId={linkShopId} />
-              <MeatballButton />
+              <ExtensionMenu />
             </div>
           </div>
           <div css={containerProfile}>
@@ -49,14 +58,14 @@ function ProfileDetailPage({ linkShopId }) {
                     font-weight: 800;
                     color: #14151a;
                   `}>
-                  너구리 직구상점
+                  {linkShopInfo?.shop.urlName ?? ''}
                 </p>
                 <p
                   css={css`
                     font-size: 1.6rem;
                     color: #888790;
                   `}>
-                  @pumpkinraccoon
+                  {linkShopInfo?.userId}
                 </p>
               </figcaption>
             </figure>
@@ -72,178 +81,55 @@ function ProfileDetailPage({ linkShopId }) {
         <div>
           <p css={titleText}>대표 상품</p>
           <div css={ContainerProductCard}>
-            <figure
-              css={css`
-                margin: 0;
-                width: 49%;
-                height: 9.5rem;
-                align-items: center;
-                padding: 1.6rem 0;
-                border-radius: 24px;
-                background: #fafafb;
-                display: flex;
-              `}>
-              <img
-                src=""
-                alt="상품 이미지"
-                css={css`
-                  width: 9.5rem;
-                  height: 9.5rem;
-                  background-color: #eceef0;
-                  display: block;
-                  margin: 0 2rem;
-                  border-radius: 1.5rem;
-                `}
-              />
-              <div
-                css={css`
-                  color: #14151a;
-                `}>
-                <figcaption
-                  css={css`
-                    font-size: 1.7rem;
-                    margin-bottom: 1rem;
-                  `}>
-                  아디다스 가젤 HP5379
-                </figcaption>
-                <span
-                  css={css`
-                    font-size: 2rem;
-                    font-weight: 700;
-                  `}>
-                  ₩134,000
-                </span>
-              </div>
-            </figure>
-            <figure
-              css={css`
-                margin: 0;
-                width: 49%;
-                height: 9.5rem;
-                align-items: center;
-                padding: 1.6rem 0;
-                border-radius: 24px;
-                background: #fafafb;
-                display: flex;
-              `}>
-              <img
-                src=""
-                alt="상품 이미지"
-                css={css`
-                  width: 9.5rem;
-                  height: 9.5rem;
-                  background-color: #eceef0;
-                  display: block;
-                  margin: 0 2rem;
-                  border-radius: 1.5rem;
-                `}
-              />
-              <div
-                css={css`
-                  color: #14151a;
-                `}>
-                <figcaption
-                  css={css`
-                    font-size: 1.7rem;
-                    margin-bottom: 1rem;
-                  `}>
-                  아디다스 가젤 HP5379
-                </figcaption>
-                <span
-                  css={css`
-                    font-size: 2rem;
-                    font-weight: 700;
-                  `}>
-                  ₩134,000
-                </span>
-              </div>
-            </figure>
-            <figure
-              css={css`
-                margin: 0;
-                width: 49%;
-                height: 9.5rem;
-                align-items: center;
-                padding: 1.6rem 0;
-                border-radius: 24px;
-                background: #fafafb;
-                display: flex;
-              `}>
-              <img
-                src=""
-                alt="상품 이미지"
-                css={css`
-                  width: 9.5rem;
-                  height: 9.5rem;
-                  background-color: #eceef0;
-                  display: block;
-                  margin: 0 2rem;
-                  border-radius: 1.5rem;
-                `}
-              />
-              <div
-                css={css`
-                  color: #14151a;
-                `}>
-                <figcaption
-                  css={css`
-                    font-size: 1.7rem;
-                    margin-bottom: 1rem;
-                  `}>
-                  아디다스 가젤 HP5379
-                </figcaption>
-                <span
-                  css={css`
-                    font-size: 2rem;
-                    font-weight: 700;
-                  `}>
-                  ₩134,000
-                </span>
-              </div>
-            </figure>
-            <figure
-              css={css`
-                margin: 0;
-                width: 49%;
-                height: 9.5rem;
-                align-items: center;
-                padding: 1.6rem 0;
-                border-radius: 24px;
-                background: #fafafb;
-                display: flex;
-              `}>
-              <img
-                src=""
-                alt="상품 이미지"
-                css={css`
-                  width: 9.5rem;
-                  height: 9.5rem;
-                  background-color: #eceef0;
-                  display: block;
-                  margin: 0 2rem;
-                  border-radius: 1.5rem;
-                `}
-              />
-              <div
-                css={css`
-                  color: #14151a;
-                `}>
-                <figcaption
-                  css={css`
-                    font-size: 1.7rem;
-                    margin-bottom: 1rem;
-                  `}>
-                  아디다스 가젤 HP5379
-                </figcaption>
-                <span
-                  css={css`
-                    font-size: 2rem;
-                    font-weight: 700;
-                  `}>
-                  ₩134,000
-                </span>
-              </div>
-            </figure>
+            {linkShopInfo &&
+              linkShopInfo.products.map((product, i) => {
+                return (
+                  <figure
+                    key={i}
+                    css={css`
+                      margin: 0;
+                      width: 49%;
+                      height: 9.5rem;
+                      align-items: center;
+                      padding: 1.6rem 0;
+                      border-radius: 24px;
+                      background: #fafafb;
+                      display: flex;
+                    `}>
+                    <img
+                      src={product.imageUrl ?? ''}
+                      alt={product.name}
+                      css={css`
+                        width: 9.5rem;
+                        height: 9.5rem;
+                        background-color: #eceef0;
+                        display: block;
+                        margin: 0 2rem;
+                        border-radius: 1.5rem;
+                      `}
+                    />
+                    <div
+                      css={css`
+                        color: #14151a;
+                      `}>
+                      <figcaption
+                        css={css`
+                          font-size: 1.7rem;
+                          margin-bottom: 1rem;
+                        `}>
+                        {product.name}
+                      </figcaption>
+                      <span
+                        css={css`
+                          font-size: 2rem;
+                          font-weight: 700;
+                        `}>
+                        {product.price}
+                      </span>
+                    </div>
+                  </figure>
+                );
+              })}
           </div>
         </div>
       </div>
