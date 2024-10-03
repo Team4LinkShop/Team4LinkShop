@@ -7,7 +7,12 @@ import CompleteButton from './components/common/button.jsx';
 function App() {
   return (
     <>
-      <div></div>
+      <div>
+        <UserInfo />
+        <ItemInformation />
+        <MyShoppingMall />
+        <CompleteButton />
+      </div>
     </>
   );
 }

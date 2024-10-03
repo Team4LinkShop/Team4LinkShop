@@ -139,8 +139,8 @@ export function Password() {
 function UserInfo() {
   return (
     <div>
-      <Id />
       <Name />
+      <Id />
       <Password />
     </div>
   );
