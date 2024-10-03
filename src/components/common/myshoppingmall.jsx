@@ -33,6 +33,15 @@ const FieldStyle = css`
   align-items: start;
 `;
 
+const Container = css`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 왼쪽 정렬 */
+  width: 100%;
+  max-width: 696px;
+  margin: 10px auto;
+`;
+
 const labelStyle = css`
   display: flex;
   flex-direction: column;
@@ -52,7 +61,7 @@ const inputStyle = css`
 
 function MyShoppingMall() {
   return (
-    <div>
+    <div css={Container}>
       <div css={TitleStyle}>내 쇼핑몰</div>
       <div css={Field}>
         <div css={FieldStyle}>

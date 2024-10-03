@@ -2,19 +2,18 @@
 import { css } from '@emotion/react';
 
 const TitleStyle = css`
-  text-align: left;
   font-size: 16px;
   font-weight: bold;
+  margin-bottom: 10px;
 `;
 
-const Field = css`
-  width: 100%;
-  max-width: 696px;
-  height: 245px;
-  margin: 10px auto;
+const Container = css`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 696px;
+  margin: 10px auto;
 `;
 
 const FieldStyle = css`
@@ -22,15 +21,14 @@ const FieldStyle = css`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 245px;
-  padding: 20px;
+  padding-left: 20px;
+  padding-top: 15px;
   font-size: 14px;
   border: 0px;
   border-radius: 25px;
   background-color: #fafafb;
   box-sizing: border-box;
   justify-content: space-between;
-  align-items: start;
 `;
 
 const labelStyle = css`
@@ -38,6 +36,7 @@ const labelStyle = css`
   flex-direction: column;
   width: 100%;
   position: relative;
+  margin-bottom: 15px;
 `;
 
 const inputStyle = css`
@@ -67,24 +66,22 @@ const fileButtonStyle = css`
 
 function ItemInformation() {
   return (
-    <div>
+    <div css={Container}>
       <div css={TitleStyle}>대표상품</div>
-      <div css={Field}>
-        <div css={FieldStyle}>
-          <label css={labelStyle}>
-            상품 대표 이미지
-            <input type="text" placeholder="상품 이미지를 첨부해주세요" css={inputStyle} />
-            <button css={fileButtonStyle}>파일첨부</button>
-          </label>
-          <label css={labelStyle}>
-            상품 이름
-            <input type="text" placeholder="상품 이름을 입력해 주세요" css={inputStyle} />
-          </label>
-          <label css={labelStyle}>
-            상품 가격
-            <input type="text" placeholder="원화로 표기해 주세요" css={inputStyle} />
-          </label>
-        </div>
+      <div css={FieldStyle}>
+        <label css={labelStyle}>
+          상품 대표 이미지
+          <input type="text" placeholder="상품 이미지를 첨부해주세요" css={inputStyle} />
+          <button css={fileButtonStyle}>파일첨부</button>
+        </label>
+        <label css={labelStyle}>
+          상품 이름
+          <input type="text" placeholder="상품 이름을 입력해 주세요" css={inputStyle} />
+        </label>
+        <label css={labelStyle}>
+          상품 가격
+          <input type="text" placeholder="원화로 표기해 주세요" css={inputStyle} />
+        </label>
       </div>
     </div>
   );

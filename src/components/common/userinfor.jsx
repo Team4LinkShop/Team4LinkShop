@@ -16,7 +16,7 @@ const FieldStyle = css`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 5px;
+  padding: 12px;
   font-size: 14px;
   border-radius: 25px;
   background-color: #fafafb;
