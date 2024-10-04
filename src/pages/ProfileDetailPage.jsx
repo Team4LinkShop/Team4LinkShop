@@ -1,13 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import bgMarketRoof from '../assets/bg-market-roof.svg';
-import icLeftArrow from '../assets/ic-left-arrow.svg';
-import icHeartBlank from '../assets/ic-blank-heart.svg';
-import icShare from '../assets/ic-share.svg';
-import icMeatBall from '../assets/ic-meatball.svg';
-import mockProfileImg from '../assets/mock-profile-img.jpg';
-
-function ProfileDetailPage() {
+import bgMarketRoof from '../assets/images/bg-market-roof.svg';
+import icLeftArrow from '../assets/images/ic-left-arrow.svg';
+import mockProfileImg from '../assets/images/mock-profile-img.jpg';
+import LikeButton from '../components/LikeButton';
+import ShareButton from '../components/ShareButton';
+function ProfileDetailPage({ linkShopId }) {
   return (
     <div>
       <div css={marketBg} />
@@ -29,14 +27,8 @@ function ProfileDetailPage() {
             margin-bottom: 3.2rem;
           `}>
           <div css={containerIcon}>
-            <div css={icContainerHeart}>
-              <img src={icHeartBlank} alt="좋아요 아이콘" />
-              <span>65</span>
-            </div>
-            <div css={icContainerShareMore}>
-              <img src={icShare} alt="공유하기 아이콘" />
-              <img src={icMeatBall} alt="더보기 아이콘" />
-            </div>
+            <LikeButton linkShopId={linkShopId} />
+            <ShareButton linkShopId={linkShopId} />
           </div>
           <div css={containerProfile}>
             <figure>
@@ -291,16 +283,6 @@ const icContainerHeart = css`
     font-size: 1.6rem;
     font-weight: 500;
     color: #14151a;
-  }
-`;
-
-const icContainerShareMore = css`
-  display: flex;
-  gap: 1.6rem;
-
-  > img {
-    width: 2.3rem;
-    height: 2.3rem;
   }
 `;
 
