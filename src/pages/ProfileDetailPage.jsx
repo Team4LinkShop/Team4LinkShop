@@ -8,9 +8,12 @@ import LikeButton from '../components/LikeButton';
 import ShareButton from '../components/ShareButton';
 import { useEffect, useState } from 'react';
 import { getLinkShop } from '../api/link-shop';
+import useMetaImage from '../hooks/useMetaImage';
 
 function ProfileDetailPage({ linkShopId }) {
   const [linkShopInfo, setLinkShopInfo] = useState();
+
+  const [metaImage, _] = useMetaImage();
 
   useEffect(() => {
     (async () => setLinkShopInfo(await getLinkShop(linkShopId)))();
@@ -49,7 +52,7 @@ function ProfileDetailPage({ linkShopId }) {
           </div>
           <div css={containerProfile}>
             <figure>
-              <img src={mockProfileImg} alt="프로필 이미지" />
+              <img src={metaImage} alt="프로필 이미지" />
               <figcaption>
                 <p
                   css={css`
