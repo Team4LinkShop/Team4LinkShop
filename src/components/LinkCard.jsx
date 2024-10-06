@@ -1,23 +1,24 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import icHeartBlank from '../assets/ic-blank-heart.svg';
-import icHeartFull from '../assets/ic-full-heart.svg';
+import icHeartBlank from '../assets/images/ic-blank-heart.svg';
+import icHeartFull from '../assets/images/ic-full-heart.svg';
 
-function LinkCard () {
+function LinkCard ( {shop} ) {
+  
   return (
     <div css={containerLinkCard}>
       <div css={containerShopProfile}>
         <img css={imgProfile} />
         <div>
-          <div css={containerShopName}>COCO낸네</div>
-          <div css={containerShopAccount}>@sleep_sound</div>
+          <div css={containerShopName}>{shop.name}</div>
+          <div css={containerShopAccount}>@{shop.userId}</div>
         </div>
       </div>
       <div css={containerLikeIcon}>
         <img css={imgLikeIcon} src={icHeartBlank} />
-        <div css={countLike}>65</div>
+        <div css={countLike}>{shop.likes}</div>
       </div>
-      <div css={countRepresentProduct}>대표 상품</div>
+      <div css={countRepresentProduct}>대표 상품 {shop.productsCount}</div>
       <div css={containerImgRepresentProduct}>
         <img css={imgProduct} />
       </div>
@@ -27,7 +28,7 @@ function LinkCard () {
 
 const containerLinkCard = css `
   position: relative;
-  width: 49%;
+  width: 100%;
   height: 237px;
   background-color: #fafafb;
   border: 0;
