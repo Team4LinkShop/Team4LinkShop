@@ -1,5 +1,7 @@
+
 import { ToastContainer } from 'react-toastify';
 import ProfileDetailPage from './pages/ProfileDetailPage';
+
 
 function App() {
   return (
