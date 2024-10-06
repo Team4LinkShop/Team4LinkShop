@@ -15,7 +15,7 @@ function ShopList() {
       if(list) setShopList(list);
     })();
   }, []);
-  
+
   return (
     <div css={containerShopList}>
       <div css={containerHeader}>
@@ -25,8 +25,9 @@ function ShopList() {
       <div css={containerSearch}></div>
       <div css={containerDetailFilter}>상세 필터</div>
       <div css={containerLinkCardList}>
-        <LinkCard />
-        <LinkCard />
+        {shopList.map((shop) => (
+          <LinkCard shop={shop} />
+        ))}
       </div>
     </div>
   );
@@ -66,7 +67,10 @@ const containerDetailFilter = css `
 
 const containerLinkCardList = css `
   position: absolute;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 10px;
   justify-content: space-between;
   width:62.5%;
   top: 256px;
