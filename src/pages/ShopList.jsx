@@ -1,10 +1,21 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { shopLists } from "../api/link-shop-list";
+import { useEffect, useState } from "react";
 import Logo from '../components/common/Logo';
 import CreateButton from '../components/common/CreateButton';
 import LinkCard from '../components/LinkCard';
 
 function ShopList() {
+  const [shopList, setShopList] = useState([]);
+
+  useEffect( () => {
+    (async () => {
+      const list = await shopLists();
+      if(list) setShopList(list);
+    })();
+  }, []);
+  
   return (
     <div css={containerShopList}>
       <div css={containerHeader}>
