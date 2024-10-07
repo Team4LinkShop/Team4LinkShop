@@ -82,7 +82,7 @@ function ProfileDetailPage() {
             margin-bottom: 10.2rem;
           `}>
           <p css={titleText}>대표 샵</p>
-          <button css={linkButton}>너구리 직구상점 공식 스토어</button>
+          <button css={linkButton}>{linkShopInfo?.shop.urlName} 공식 스토어</button>
         </div>
         <div>
           <p css={titleText}>대표 상품</p>
