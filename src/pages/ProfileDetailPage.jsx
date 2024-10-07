@@ -9,12 +9,13 @@ import { useEffect, useState } from 'react';
 import { getLinkShop } from '../api/link-shop';
 import useMetaImage from '../hooks/useMetaImage';
 import { Link, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 function ProfileDetailPage() {
   const { linkId } = useParams();
   const [linkShopInfo, setLinkShopInfo] = useState();
 
-  const [metaImage, _] = useMetaImage();
+  const [metaImage] = useMetaImage(linkShopInfo);
 
   useEffect(() => {
     if (linkId) {
@@ -23,7 +24,14 @@ function ProfileDetailPage() {
   }, [linkId]);
 
   return (
-    <div>
+    <>
+      <Helmet>
+        <meta
+          property="og:image"
+          // NOTE: 백엔드에서 메타데이터 불러올 수 있을 때, content={linkShopInfo?.products[0]?.imageUrl ?? '/src/assets/images/mock-profile-img.jpg'}
+          content={'/src/assets/images/mock-profile-img.jpg'}
+        />
+      </Helmet>
       <div css={marketBg} />
       <div css={layout}>
         <div css={containerBtnBack}>
@@ -139,7 +147,7 @@ function ProfileDetailPage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

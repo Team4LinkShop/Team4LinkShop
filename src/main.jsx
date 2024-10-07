@@ -5,6 +5,7 @@ import { Global, css } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -28,8 +29,10 @@ createRoot(document.getElementById('root')).render(
         }
       `}
     />
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
   </StrictMode>
 );
