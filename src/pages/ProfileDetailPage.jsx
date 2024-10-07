@@ -2,32 +2,35 @@
 import { css } from '@emotion/react';
 import bgMarketRoof from '../assets/images/bg-market-roof.svg';
 import icLeftArrow from '../assets/images/ic-left-arrow.svg';
-import mockProfileImg from '../assets/images/mock-profile-img.jpg';
 import ExtensionMenu from '../components/ExtensionMenu';
 import LikeButton from '../components/LikeButton';
 import ShareButton from '../components/ShareButton';
 import { useEffect, useState } from 'react';
 import { getLinkShop } from '../api/link-shop';
 import useMetaImage from '../hooks/useMetaImage';
+import { Link, useParams } from 'react-router-dom';
 
-function ProfileDetailPage({ linkShopId }) {
+function ProfileDetailPage() {
+  const { linkId } = useParams();
   const [linkShopInfo, setLinkShopInfo] = useState();
 
   const [metaImage, _] = useMetaImage();
 
   useEffect(() => {
-    (async () => setLinkShopInfo(await getLinkShop(linkShopId)))();
-  }, []);
+    if (linkId) {
+      (async () => setLinkShopInfo(await getLinkShop(linkId)))();
+    }
+  }, [linkId]);
 
   return (
     <div>
       <div css={marketBg} />
       <div css={layout}>
         <div css={containerBtnBack}>
-          <a href="/list">
+          <Link to="/list">
             <img src={icLeftArrow} alt="돌아가기 아이콘" />
             <span>돌아가기</span>
-          </a>
+          </Link>
         </div>
         <div
           css={css`
@@ -40,13 +43,13 @@ function ProfileDetailPage({ linkShopId }) {
             margin-bottom: 3.2rem;
           `}>
           <div css={containerIcon}>
-            <LikeButton linkShopId={linkShopId} />
+            <LikeButton linkId={linkId} />
             <div
               css={css`
                 display: flex;
                 gap: 1.6rem;
               `}>
-              <ShareButton linkShopId={linkShopId} />
+              <ShareButton linkId={linkId} />
               <ExtensionMenu />
             </div>
           </div>
