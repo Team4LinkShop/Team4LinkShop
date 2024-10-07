@@ -10,6 +10,7 @@ import { getLinkShop } from '../api/link-shop';
 import useMetaImage from '../hooks/useMetaImage';
 import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { formatPrice } from '../utils/formatPrice';
 
 function ProfileDetailPage() {
   const { linkId } = useParams();
@@ -121,7 +122,7 @@ function ProfileDetailPage() {
                           font-size: 2rem;
                           font-weight: 700;
                         `}>
-                        {product.price}
+                        {formatPrice(product.price)}
                       </span>
                     </div>
                   </figure>
@@ -152,15 +153,14 @@ const layout = css`
 
 const marketBg = css`
   background-image: url(${bgMarketRoof});
-  width: calc(100% - 6rem);
   height: 64px;
-  margin: 0 auto;
+  margin: 0 2.9rem;
 
   @media only screen and (max-width: 1024px) {
-    width: calc(100% - 7.2rem);
+    margin: 0 1.4rem;
   }
   @media only screen and (max-width: 768px) {
-    width: calc(100% - 2rem);
+    margin: 0 0.9rem;
   }
 `;
 
