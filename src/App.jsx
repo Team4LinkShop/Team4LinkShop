@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import ProfileDetailPage from './pages/ProfileDetailPage';
 
+
 function App() {
   return (
     <>
