@@ -98,18 +98,7 @@ function ProfileDetailPage() {
             {linkShopInfo &&
               linkShopInfo.products.map((product, i) => {
                 return (
-                  <figure
-                    key={i}
-                    css={css`
-                      margin: 0;
-                      width: 49%;
-                      height: 9.5rem;
-                      align-items: center;
-                      padding: 1.6rem 0;
-                      border-radius: 24px;
-                      background: #fafafb;
-                      display: flex;
-                    `}>
+                  <figure key={i} css={ProductCard}>
                     <img
                       src={product.imageUrl ?? ''}
                       alt={product.name}
@@ -126,13 +115,7 @@ function ProfileDetailPage() {
                       css={css`
                         color: #14151a;
                       `}>
-                      <figcaption
-                        css={css`
-                          font-size: 1.7rem;
-                          margin-bottom: 1rem;
-                        `}>
-                        {product.name}
-                      </figcaption>
+                      <figcaption css={CardProductName}>{product.name}</figcaption>
                       <span
                         css={css`
                           font-size: 2rem;
@@ -152,7 +135,19 @@ function ProfileDetailPage() {
 }
 
 const layout = css`
-  margin: 2.5rem 36rem;
+  max-width: 1200px;
+  width: 62.5%;
+  margin: 0 auto;
+  margin-top: 2.5rem;
+
+  @media only screen and (max-width: 1024px) {
+    width: 93.5%;
+    margin: 2rem 2.4rem;
+  }
+
+  @media only screen and (max-width: 768px) {
+    width: 87.9%;
+  }
 `;
 
 const marketBg = css`
@@ -160,6 +155,13 @@ const marketBg = css`
   width: calc(100% - 6rem);
   height: 64px;
   margin: 0 auto;
+
+  @media only screen and (max-width: 1024px) {
+    width: calc(100% - 7.2rem);
+  }
+  @media only screen and (max-width: 768px) {
+    width: calc(100% - 2rem);
+  }
 `;
 
 const containerBtnBack = css`
@@ -175,22 +177,6 @@ const containerBtnBack = css`
   }
   img {
     padding: 0.3rem 0.1rem 0.2rem 0.5rem;
-  }
-`;
-
-const icContainerHeart = css`
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-
-  > img {
-    width: 1.9rem;
-  }
-
-  > span {
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: #14151a;
   }
 `;
 
@@ -233,6 +219,30 @@ const ContainerProductCard = css`
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 1.2rem;
+
+  @media only screen and (max-width: 1024px) {
+    row-gap: 1rem;
+  }
+`;
+
+const ProductCard = css`
+  margin: 0;
+  width: 49%;
+  align-items: center;
+  padding: 1.6rem 0;
+  border-radius: 2.4rem;
+  background: #fafafb;
+  display: flex;
+
+  @media only screen and (max-width: 1024px) {
+    width: 100%;
+  }
+`;
+
+const CardProductName = css`
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
 `;
 
 export default ProfileDetailPage;
