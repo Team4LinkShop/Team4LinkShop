@@ -4,6 +4,7 @@ import App from './App.jsx';
 import { Global, css } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -27,6 +28,8 @@ createRoot(document.getElementById('root')).render(
         }
       `}
     />
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>
 );
