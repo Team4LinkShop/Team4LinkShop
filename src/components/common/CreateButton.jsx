@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 function CreateButton() {
   return (
     <div css={containerBtnCreate}>
-      <input css={btnCreate} type='button' value='생성하기' />
+      <a href="/linkpost"><input css={btnCreate} type='button' value='생성하기' /></a>
     </div>
   );
 }
@@ -23,5 +23,6 @@ const btnCreate = css`
   line-height: 38px;
   font-size: 18px;
   text-align: center;
+  cursor: pointer;
 `;
 export default CreateButton;
