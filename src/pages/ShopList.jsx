@@ -5,9 +5,16 @@ import { useEffect, useState } from "react";
 import Logo from '../components/common/Logo';
 import CreateButton from '../components/common/CreateButton';
 import LinkCard from '../components/LinkCard';
+import DetailFilter from '../components/DetailFilter';
 
 function ShopList() {
   const [shopList, setShopList] = useState([]);
+  const [filterMenu, setFilterMenu] = useState("latest");
+  const filterOptionList = [
+    {value:"latest", name:"최신순"},
+    {value:"likes", name:"좋아요순"},
+    {value:"products", name:"등록된 상품순"},
+  ];
 
   useEffect( () => {
     (async () => {
@@ -22,8 +29,12 @@ function ShopList() {
         <Logo />
         <CreateButton />
       </div>
-      <div css={containerSearch}></div>
-      <div css={containerDetailFilter}>상세 필터</div>
+      <div css={containerSearch}>
+        <input css={inputSearch} type="text" placeholder="제목으로 검색해 보세요." />
+      </div>
+      <div css={containerDetailFilter}>
+        <DetailFilter value={filterMenu} onChange={setFilterMenu} filterList={filterOptionList} />
+      </div>
       <div css={containerLinkCardList}>
         {shopList.map((shop) => (
           <LinkCard shop={shop} />
@@ -43,8 +54,8 @@ const containerShopList = css `
 
 const containerHeader = css `
   position: absolute;
-  width:62.5%;
-  top:40px;
+  width: 62.5%;
+  top: 40px;
   display: flex;
   justify-content: space-between;
 `;
@@ -53,10 +64,18 @@ const containerSearch = css `
   position: absolute;
   top:108px;
   width:62.5%;
-  border:1px solid #dddcdf;
+`;
+
+const inputSearch = css `
+  position: relative;
+  width: 100%;
+  border:2px solid #dddcdf;
   border-radius: 49px;
   height:55px;
   line-height: 55px;
+  font-size: 18px;
+  padding-left: 30px;
+  box-sizing: border-box;
 `;
 
 const containerDetailFilter = css `
