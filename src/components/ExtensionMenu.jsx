@@ -38,9 +38,7 @@ function ExtensionMenu() {
     setPasswordInput(e.target.value);
   };
 
-  const goToEditPage = () => {
-    
-  }
+  const goToEditPage = () => {};
 
   return (
     <>
@@ -65,8 +63,10 @@ function ExtensionMenu() {
               placeholder="비밀번호를 입력하세요"
               onChange={onChangePassword}
             />
-            <button onClick={() => console.log(passwordInput)}>편집</button>
-            <button onClick={closeModal}>닫기</button>
+            <div css={detailPageModalBtn}>
+              <button onClick={closeModal}>닫기</button>
+              <button onClick={() => console.log(passwordInput)}>편집</button>
+            </div>
           </div>
         </div>
       )}
@@ -90,9 +90,60 @@ const modalStyle = css`
 const modalContentStyle = css`
   background-color: #fff;
   padding: 20px;
-  border-radius: 8px;
-  width: 300px;
+  border-radius: 3rem;
+  width: 34.3rem;
   text-align: center;
+  min-height: 19.4rem;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 1.7rem;
+    font-weight: 500;
+  }
+
+  > input {
+    height: 100%;
+    padding: 1.6rem 2.4rem;
+    font-size: 1.6rem;
+    color: #1f2937;
+    background-color: #f3f4f6;
+    border: none;
+    border-radius: 1.2rem;
+
+    :focus {
+      outline: 1px solid #3e45ec;
+    }
+  }
+`;
+
+const detailPageModalBtn = css`
+  display: flex;
+  height: 5rem;
+  margin-top: 2.4rem;
+  justify-content: center;
+  gap: 0.4rem;
+
+  > button {
+    font-size: 1.7rem;
+    padding: 1.5rem 0;
+    border-radius: 3.7rem;
+    width: 35%;
+    cursor: pointer;
+  }
+  > button:last-of-type {
+    font-weight: 600;
+    background-color: #3e45ec;
+    color: #fff;
+    border: 2px solid transparent;
+  }
+
+  > button:first-of-type {
+    font-size: 1.7rem;
+    border: 2px solid #3e45ec;
+    background-color: #fff;
+    color: #3e45ec;
+  }
 `;
 
 export default ExtensionMenu;
