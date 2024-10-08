@@ -27,7 +27,7 @@ function LinkCard ( {shop} ) {
         </div>
       </div>
       <div css={containerLikeIcon}>
-        <LikeButton linkShopId={shop.id} />
+        <LikeButton linkId={shop.id} />
       </div>
       <div css={countRepresentProduct}>대표 상품 {shop.productsCount}</div>
       <div css={containerImgRepresentProduct}>
