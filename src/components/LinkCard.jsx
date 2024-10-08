@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 import icHeartBlank from '../assets/images/ic-blank-heart.svg';
 import icHeartFull from '../assets/images/ic-full-heart.svg';
+import LikeButton from './LikeButton';
 
 function LinkCard ( {shop} ) {
   
@@ -15,8 +16,7 @@ function LinkCard ( {shop} ) {
         </div>
       </div>
       <div css={containerLikeIcon}>
-        <img css={imgLikeIcon} src={icHeartBlank} />
-        <div css={countLike}>{shop.likes}</div>
+        <LikeButton linkShopId={shop.id} />
       </div>
       <div css={countRepresentProduct}>대표 상품 {shop.productsCount}</div>
       <div css={containerImgRepresentProduct}>
