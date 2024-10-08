@@ -6,10 +6,12 @@ import Logo from '../components/common/Logo';
 import CreateButton from '../components/common/CreateButton';
 import LinkCard from '../components/LinkCard';
 import DetailFilter from '../components/DetailFilter';
+import icSearch from '../assets/images/ic-search.svg';
 
 function ShopList() {
   const [shopList, setShopList] = useState([]);
   const [filterMenu, setFilterMenu] = useState("latest");
+  const [searchTerm, setSearchTerm] = useState('');
   const filterOptionList = [
     {value:"latest", name:"최신순"},
     {value:"likes", name:"좋아요순"},
@@ -23,6 +25,20 @@ function ShopList() {
     })();
   }, []);
 
+  const filterShopList = [...shopList].sort((a, b) => {
+    if (sortOrder === 'likes') {
+      return b.likes - a.likes; // 좋아요 수 내림차순
+    }
+    if (sortOrder === 'products') {
+      return b.productsCount - a.productsCount; // 등록된 상품 수 내림차순
+    }
+    return new Date(b.createdAt) - new Date(a.createdAt); // 최신순
+  });
+
+  const searchedShopList = filterShopList.filter(shop =>
+    shop.name.includes(searchTerm)
+  );
+
   return (
     <div css={containerShopList}>
       <div css={containerHeader}>
@@ -30,13 +46,14 @@ function ShopList() {
         <CreateButton />
       </div>
       <div css={containerSearch}>
-        <input css={inputSearch} type="text" placeholder="제목으로 검색해 보세요." />
+        <img css={iconSearch} src={icSearch} />
+        <input css={inputSearch} type="search" placeholder="제목으로 검색해 보세요." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
       </div>
       <div css={containerDetailFilter}>
         <DetailFilter value={filterMenu} onChange={setFilterMenu} filterList={filterOptionList} />
       </div>
       <div css={containerLinkCardList}>
-        {shopList.map((shop) => (
+        {searchedShopList.map((shop) => (
           <LinkCard shop={shop} />
         ))}
       </div>
@@ -62,8 +79,16 @@ const containerHeader = css `
 
 const containerSearch = css `
   position: absolute;
+  display: flex;
   top:108px;
   width:62.5%;
+`;
+
+const iconSearch = css `
+  position: absolute;
+  left: 20px;
+  top: 30%;
+  z-index: 1;
 `;
 
 const inputSearch = css `
@@ -74,7 +99,7 @@ const inputSearch = css `
   height:55px;
   line-height: 55px;
   font-size: 18px;
-  padding-left: 30px;
+  padding-left: 50px;
   box-sizing: border-box;
 `;
 
