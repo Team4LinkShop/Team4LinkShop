@@ -1,10 +1,21 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { shopLists } from "../api/link-shop-list";
+import { useEffect, useState } from "react";
 import Logo from '../components/common/Logo';
 import CreateButton from '../components/common/CreateButton';
 import LinkCard from '../components/LinkCard';
 
 function ShopList() {
+  const [shopList, setShopList] = useState([]);
+
+  useEffect( () => {
+    (async () => {
+      const list = await shopLists();
+      if(list) setShopList(list);
+    })();
+  }, []);
+
   return (
     <div css={containerShopList}>
       <div css={containerHeader}>
@@ -14,8 +25,9 @@ function ShopList() {
       <div css={containerSearch}></div>
       <div css={containerDetailFilter}>상세 필터</div>
       <div css={containerLinkCardList}>
-        <LinkCard />
-        <LinkCard />
+        {shopList.map((shop) => (
+          <LinkCard shop={shop} />
+        ))}
       </div>
     </div>
   );
@@ -55,7 +67,10 @@ const containerDetailFilter = css `
 
 const containerLinkCardList = css `
   position: absolute;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 10px;
   justify-content: space-between;
   width:62.5%;
   top: 256px;
