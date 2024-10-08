@@ -32,7 +32,7 @@ function LinkCard ( {shop} ) {
       <div css={countRepresentProduct}>대표 상품 {shop.productsCount}</div>
       <div css={containerImgRepresentProduct}>
         {productList.map((product) => (
-          <img css={imgProduct} src={product.imageUrl} />
+          <img key={product.id} css={imgProduct} src={product.imageUrl} />
           ))}
       </div>
     </div>
