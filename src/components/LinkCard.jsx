@@ -1,11 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import icHeartBlank from '../assets/images/ic-blank-heart.svg';
-import icHeartFull from '../assets/images/ic-full-heart.svg';
+import { useEffect, useState } from "react";
 import LikeButton from './LikeButton';
+import { shopProducts } from '../api/shop-products';
 
 function LinkCard ( {shop} ) {
-  
+  const [productList, setproductList] = useState([]);
+  useEffect( () => {
+    (async () => {
+      const list = await shopProducts(shop.id);
+      if(list) setproductList(list);
+    })();
+  }, []);
+  console.log(productList);
   return (
     <div css={containerLinkCard}>
       <div css={containerShopProfile}>
@@ -20,7 +27,9 @@ function LinkCard ( {shop} ) {
       </div>
       <div css={countRepresentProduct}>대표 상품 {shop.productsCount}</div>
       <div css={containerImgRepresentProduct}>
-        <img css={imgProduct} />
+        {productList.map((product) => (
+          <img css={imgProduct} src={product.imageUrl} />
+          ))}
       </div>
     </div>
   );
@@ -74,14 +83,6 @@ const containerLikeIcon = css `
   align-items: center;
 `;
 
-const imgLikeIcon = css `
-  border: 0;
-`;
-
-const countLike = css `
-  font-size: 16px;
-  font-weight: 500;
-`;
 const countRepresentProduct = css `
   margin: 8px;
   font-size: 15px;
@@ -90,6 +91,8 @@ const countRepresentProduct = css `
 
 const containerImgRepresentProduct = css `
   padding: 0;
+  height: 95px;
+  overflow: hidden;
 `;
 
 const imgProduct = css `
