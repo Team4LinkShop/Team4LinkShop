@@ -9,6 +9,7 @@ import { likeData } from '../api/likes';
 const LIKED = 'liked';
 
 function LikeButton({ linkId }) {
+
   const [likeCount, setLikeCount] = useState(0);
   const [isLikeClicked, setIsLikeClicked] = useState(
     () => JSON.parse(window.localStorage.getItem(LIKED)) || false
@@ -17,6 +18,7 @@ function LikeButton({ linkId }) {
   useEffect(() => {
     (async () => {
       const result = await likeHandler(linkId);
+
       if (result) {
         setLikeCount(result);
       }
@@ -32,6 +34,7 @@ function LikeButton({ linkId }) {
       setIsLikeClicked(false);
       if (await likeData(linkId, false)) {
         const result = await likeHandler(linkId);
+
         if (result) {
           setLikeCount(result);
         }
@@ -40,6 +43,7 @@ function LikeButton({ linkId }) {
       setIsLikeClicked(true);
       if (await likeData(linkId, true)) {
         const result = await likeHandler(linkId);
+
         if (result) {
           setLikeCount(result);
         }

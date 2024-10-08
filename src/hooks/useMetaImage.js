@@ -8,5 +8,6 @@ export default function useMetaImage(meta) {
     if (image) setMainImage(image);
   }, [meta]);
 
+
   return [mainImage, setMainImage];
 }
