@@ -1,5 +1,7 @@
+/** @jsxImportSource @emotion/react */
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
+import { useNavigate } from 'react-router-dom';
 
 const buttonContainerStyle = css`
   display: flex;
@@ -59,6 +61,7 @@ const confirmButtonStyle = css`
 
 const CompleteButton = ({ isActive }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleClick = () => {
     if (isActive) {
@@ -68,6 +71,7 @@ const CompleteButton = ({ isActive }) => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    navigate('/ProfilDetailPage');
   };
 
   return (
