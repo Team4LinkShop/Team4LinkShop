@@ -12,7 +12,6 @@ function ShopList() {
   const [shopList, setShopList] = useState([]);
   const [filterMenu, setFilterMenu] = useState("latest");
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortedShopList, setSortedShopList] = useState([]);
   
   const filterOptionList = [
     {value:"latest", name:"최신순"},
@@ -20,34 +19,26 @@ function ShopList() {
     {value:"products", name:"등록된 상품순"},
   ];
 
-  useEffect( () => {
+  useEffect(() => {
     (async () => {
       const list = await shopLists();
-      if(list) setShopList(list);
+      if (list) setShopList(list);
     })();
   }, []);
 
-  useEffect(() => {
-    const sortShopList = () => {
-      const sortedList = [...shopList].sort((a, b) => {
-        if (filterMenu === 'likes') {
-          return b.likes - a.likes;
-        }
-        if (filterMenu === 'products') {
-          return b.productsCount - a.productsCount;
-        }
-        return new Date(b.createdAt) - new Date(a.createdAt);
-      });
-      setSortedShopList(sortedList);
-    };
-
-    sortShopList();
-  }, [shopList, filterMenu]);
+  const sortedShopList = [...shopList].sort((a, b) => {
+    if (filterMenu === 'likes') {
+      return b.likes - a.likes;
+    }
+    if (filterMenu === 'products') {
+      return b.productsCount - a.productsCount;
+    }
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
 
   const searchedShopList = sortedShopList.filter(shop =>
     shop.name.includes(searchTerm)
   );
-
 
   return (
     <div css={containerShopList}>
@@ -64,7 +55,7 @@ function ShopList() {
       </div>
       <div css={containerLinkCardList}>
         {searchedShopList.map((shop) => (
-          <LinkCard shop={shop} />
+          <LinkCard key={shop.id} shop={shop} />
         ))}
       </div>
     </div>
