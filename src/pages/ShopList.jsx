@@ -12,6 +12,8 @@ function ShopList() {
   const [shopList, setShopList] = useState([]);
   const [filterMenu, setFilterMenu] = useState("latest");
   const [searchTerm, setSearchTerm] = useState('');
+  const [sortedShopList, setSortedShopList] = useState([]);
+  
   const filterOptionList = [
     {value:"latest", name:"최신순"},
     {value:"likes", name:"좋아요순"},
@@ -25,19 +27,27 @@ function ShopList() {
     })();
   }, []);
 
-  const filterShopList = [...shopList].sort((a, b) => {
-    if (sortOrder === 'likes') {
-      return b.likes - a.likes; // 좋아요 수 내림차순
-    }
-    if (sortOrder === 'products') {
-      return b.productsCount - a.productsCount; // 등록된 상품 수 내림차순
-    }
-    return new Date(b.createdAt) - new Date(a.createdAt); // 최신순
-  });
+  useEffect(() => {
+    const sortShopList = () => {
+      const sortedList = [...shopList].sort((a, b) => {
+        if (filterMenu === 'likes') {
+          return b.likes - a.likes;
+        }
+        if (filterMenu === 'products') {
+          return b.productsCount - a.productsCount;
+        }
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+      setSortedShopList(sortedList);
+    };
 
-  const searchedShopList = filterShopList.filter(shop =>
+    sortShopList();
+  }, [shopList, filterMenu]);
+
+  const searchedShopList = sortedShopList.filter(shop =>
     shop.name.includes(searchTerm)
   );
+
 
   return (
     <div css={containerShopList}>
