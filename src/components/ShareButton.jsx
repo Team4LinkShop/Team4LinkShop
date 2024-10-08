@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import icMeatBall from '../assets/images/ic-meatball.svg';
 import icShare from '../assets/images/ic-share.svg';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,25 +20,20 @@ function ShareButton({ linkShopId }) {
 
   return (
     <>
-      <div css={icContainerShareMore}>
+      <div css={icContainer}>
         <div
-          css={css`
-            cursor: pointer;
-          `}
           onClick={() => {
             handleCopyClipBoard(`${fullURL}link/${linkShopId}`);
           }}>
           <img src={icShare} alt="공유하기 아이콘" />
         </div>
-        <img src={icMeatBall} alt="더보기 아이콘" />
       </div>
     </>
   );
 }
 
-const icContainerShareMore = css`
-  display: flex;
-  gap: 1.6rem;
+export const icContainer = css`
+  cursor: pointer;
 
   > img {
     width: 2.3rem;

@@ -3,20 +3,20 @@ import { useEffect, useState } from 'react';
 import icHeartBlank from '../assets/images/ic-blank-heart.svg';
 import icHeartFull from '../assets/images/ic-full-heart.svg';
 import { css } from '@emotion/react';
-import { LikeHandler } from '../api/link-shop';
+import { likeHandler } from '../api/likes';
 import { likeData } from '../api/likes';
 
 const LIKED = 'liked';
 
 function LikeButton({ linkShopId }) {
-  const [likeCount, setLikeCount] = useState(
-    () => JSON.parse(window.localStorage.getItem(LIKED)) || 0
+  const [likeCount, setLikeCount] = useState(0);
+  const [isLikeClicked, setIsLikeClicked] = useState(
+    () => JSON.parse(window.localStorage.getItem(LIKED)) || false
   );
-  const [isLikeClicked, setIsLikeClicked] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const result = await LikeHandler(linkShopId);
+      const result = await likeHandler(linkShopId);
       if (result) {
         setLikeCount(result);
       }
@@ -31,7 +31,7 @@ function LikeButton({ linkShopId }) {
     if (isLikeClicked) {
       setIsLikeClicked(false);
       if (await likeData(linkShopId, false)) {
-        const result = await LikeHandler(linkShopId);
+        const result = await likeHandler(linkShopId);
         if (result) {
           setLikeCount(result);
         }
@@ -39,7 +39,7 @@ function LikeButton({ linkShopId }) {
     } else {
       setIsLikeClicked(true);
       if (await likeData(linkShopId, true)) {
-        const result = await LikeHandler(linkShopId);
+        const result = await likeHandler(linkShopId);
         if (result) {
           setLikeCount(result);
         }
