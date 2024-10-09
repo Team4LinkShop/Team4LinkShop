@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
 import icShare from '../assets/images/ic-share.svg';
@@ -24,7 +23,8 @@ function ShareButton({ linkShopId }) {
         <div
           onClick={() => {
             handleCopyClipBoard(`${fullURL}link/${linkShopId}`);
-          }}>
+          }}
+        >
           <img src={icShare} alt="공유하기 아이콘" />
         </div>
       </div>

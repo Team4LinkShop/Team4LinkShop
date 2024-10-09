@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-
 import { useEffect, useRef, useState } from 'react';
 import icMeatBall from '../assets/images/ic-meatball.svg';
 import { icContainer } from './ShareButton';
@@ -48,7 +46,8 @@ function ExtensionMenu() {
           ${icContainer};
           position: relative;
         `}
-        onClick={() => setIsOpen(!isDropMenuOpen)}>
+        onClick={() => setIsOpen(!isDropMenuOpen)}
+      >
         <img src={icMeatBall} alt="더보기 아이콘" />
         {isDropMenuOpen && <ProfileDropDown onEditClick={openModal} />}
       </div>
