@@ -3,32 +3,36 @@ import { css } from '@emotion/react';
 import { useEffect, useState } from "react";
 import LikeButton from './LikeButton';
 import { shopProducts } from '../api/shop-products';
+import { shopImg } from '../api/link-shop-img';
 
 function LinkCard ( {shop} ) {
   const [productList, setproductList] = useState([]);
+  const [shopImgs, setShopImgs] = useState([]);
   useEffect( () => {
     (async () => {
       const list = await shopProducts(shop.id);
+      const images = await shopImg(shop.id);
       if(list) setproductList(list);
+      if(images) setShopImgs(images);
     })();
-  }, []);
-  console.log(productList);
+  }, [shop.id]);
+  
   return (
     <div css={containerLinkCard}>
       <div css={containerShopProfile}>
-        <img css={imgProfile} />
+        <img css={imgProfile} src={shopImgs} alt={shop.name} />
         <div>
           <div css={containerShopName}>{shop.name}</div>
           <div css={containerShopAccount}>@{shop.userId}</div>
         </div>
       </div>
       <div css={containerLikeIcon}>
-        <LikeButton linkShopId={shop.id} />
+        <LikeButton linkId={shop.id} />
       </div>
       <div css={countRepresentProduct}>대표 상품 {shop.productsCount}</div>
       <div css={containerImgRepresentProduct}>
         {productList.map((product) => (
-          <img css={imgProduct} src={product.imageUrl} />
+          <img key={product.id} css={imgProduct} src={product.imageUrl} />
           ))}
       </div>
     </div>
@@ -58,6 +62,7 @@ const imgProfile = css `
   width: 60px;
   height: 60px;
   margin-right: 10px;
+  object-fit: contain;
 `;
 
 const containerShopName = css `
