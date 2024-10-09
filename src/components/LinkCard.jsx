@@ -1,28 +1,35 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import LikeButton from './LikeButton';
 import { shopProducts } from '../api/shop-products';
 import { shopImg } from '../api/link-shop-img';
+import { useNavigate } from 'react-router-dom';
 
-function LinkCard ( {shop} ) {
+function LinkCard({ shop }) {
+  const navigate = useNavigate();
+  const navigateToDetailPage = () => {
+    navigate(`/link/${shop.id}`);
+  };
+
   const [productList, setproductList] = useState([]);
   const [shopImgs, setShopImgs] = useState([]);
-  useEffect( () => {
+  useEffect(() => {
     (async () => {
       const list = await shopProducts(shop.id);
       const images = await shopImg(shop.id);
-      if(list) setproductList(list);
-      if(images) setShopImgs(images);
+      if (list) setproductList(list);
+      if (images) setShopImgs(images);
     })();
   }, [shop.id]);
-  
+
   return (
     <div css={containerLinkCard}>
       <div css={containerShopProfile}>
         <img css={imgProfile} src={shopImgs} alt={shop.name} />
         <div>
-          <div css={containerShopName}>{shop.name}</div>
+          <div css={containerShopName} onClick={navigateToDetailPage}>
+            {shop.name}
+          </div>
           <div css={containerShopAccount}>@{shop.userId}</div>
         </div>
       </div>
@@ -33,13 +40,13 @@ function LinkCard ( {shop} ) {
       <div css={containerImgRepresentProduct}>
         {productList.map((product) => (
           <img key={product.id} css={imgProduct} src={product.imageUrl} />
-          ))}
+        ))}
       </div>
     </div>
   );
 }
 
-const containerLinkCard = css `
+const containerLinkCard = css`
   position: relative;
   width: 100%;
   height: 237px;
@@ -50,7 +57,7 @@ const containerLinkCard = css `
   padding: 24px;
 `;
 
-const containerShopProfile = css `
+const containerShopProfile = css`
   display: flex;
   width: 213px;
   height: 60px;
@@ -58,27 +65,28 @@ const containerShopProfile = css `
   align-items: center;
 `;
 
-const imgProfile = css `
+const imgProfile = css`
   width: 60px;
   height: 60px;
   margin-right: 10px;
   object-fit: contain;
 `;
 
-const containerShopName = css `
+const containerShopName = css`
   height: 21px;
   margin-bottom: 7px;
   font-size: 18px;
   font-weight: 600;
+  cursor: pointer;
 `;
 
-const containerShopAccount = css `
+const containerShopAccount = css`
   height: 19px;
   font-size: 16px;
   color: #888790;
 `;
 
-const containerLikeIcon = css `
+const containerLikeIcon = css`
   position: absolute;
   display: flex;
   top: 24px;
@@ -88,19 +96,19 @@ const containerLikeIcon = css `
   align-items: center;
 `;
 
-const countRepresentProduct = css `
+const countRepresentProduct = css`
   margin: 8px;
   font-size: 15px;
   font-weight: 500;
 `;
 
-const containerImgRepresentProduct = css `
+const containerImgRepresentProduct = css`
   padding: 0;
   height: 95px;
   overflow: hidden;
 `;
 
-const imgProduct = css `
+const imgProduct = css`
   width: 95px;
   height: 95px;
   border: 0;

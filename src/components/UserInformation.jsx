@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { useState } from 'react';
 import { css } from '@emotion/react';
 import closeeye from '../assets/images/closeeye.png';

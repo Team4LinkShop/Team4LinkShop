@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { useEffect, useState } from 'react';
 import icHeartBlank from '../assets/images/ic-blank-heart.svg';
 import icHeartFull from '../assets/images/ic-full-heart.svg';
@@ -9,10 +8,9 @@ import { likeData } from '../api/likes';
 const LIKED = 'liked';
 
 function LikeButton({ linkId }) {
-
   const [likeCount, setLikeCount] = useState(0);
   const [isLikeClicked, setIsLikeClicked] = useState(
-    () => JSON.parse(window.localStorage.getItem(LIKED)) || false
+    () => JSON.parse(window.localStorage.getItem(linkId + LIKED)) || false
   );
 
   useEffect(() => {
@@ -26,7 +24,11 @@ function LikeButton({ linkId }) {
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem(LIKED, JSON.stringify(isLikeClicked));
+    if (isLikeClicked) {
+      window.localStorage.setItem(linkId + LIKED, true);
+    } else {
+      window.localStorage.removeItem(linkId + LIKED);
+    }
   }, [isLikeClicked]);
 
   const handleClick = async () => {
@@ -67,7 +69,8 @@ function LikeButton({ linkId }) {
           display: flex;
           align-items: center;
           gap: 0.6rem;
-        `}>
+        `}
+      >
         {isLikeClicked ? (
           <img src={icHeartFull} alt="좋아요 누른 아이콘" />
         ) : (

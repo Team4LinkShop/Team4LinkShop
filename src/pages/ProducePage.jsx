@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import UserInformation from '../components/UserInformation.jsx';
 import ItemInformation from '../components/ItemInformation.jsx';
 import MyShoppingMall from '../components/MyShoppingMall.jsx';

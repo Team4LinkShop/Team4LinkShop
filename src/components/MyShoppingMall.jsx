@@ -1,5 +1,24 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+
+function MyShoppingMall() {
+  return (
+    <div css={Container}>
+      <div css={TitleStyle}>내 쇼핑몰</div>
+      <div css={Field}>
+        <form css={FieldStyle}>
+          <label css={labelStyle}>
+            쇼핑몰 URL
+            <input type="text" placeholder="URL을 입력해주세요" css={inputStyle} />
+          </label>
+          <label css={labelStyle}>
+            URL 이름
+            <input type="text" placeholder="URL이름을 입력해 주세요" css={inputStyle} />
+          </label>
+        </form>
+      </div>
+    </div>
+  );
+}
 
 const TitleStyle = css`
   text-align: left;
@@ -58,25 +77,5 @@ const inputStyle = css`
   outline: none;
   box-sizing: border-box;
 `;
-
-function MyShoppingMall() {
-  return (
-    <div css={Container}>
-      <div css={TitleStyle}>내 쇼핑몰</div>
-      <div css={Field}>
-        <form css={FieldStyle}>
-          <label css={labelStyle}>
-            쇼핑몰 URL
-            <input type="text" placeholder="URL을 입력해주세요" css={inputStyle} />
-          </label>
-          <label css={labelStyle}>
-            URL 이름
-            <input type="text" placeholder="URL이름을 입력해 주세요" css={inputStyle} />
-          </label>
-        </form>
-      </div>
-    </div>
-  );
-}
 
 export default MyShoppingMall;
