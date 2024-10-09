@@ -1,22 +1,18 @@
-/** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { getLinkShop } from '../api/link-shop';
 import bgMarketRoof from '../assets/images/bg-market-roof.svg';
 import icLeftArrow from '../assets/images/ic-left-arrow.svg';
 import ExtensionMenu from '../components/ExtensionMenu';
 import LikeButton from '../components/LikeButton';
 import ShareButton from '../components/ShareButton';
-import { useEffect, useState } from 'react';
-import { getLinkShop } from '../api/link-shop';
-import useMetaImage from '../hooks/useMetaImage';
-import { Link, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { formatPrice } from '../utils/formatPrice';
+import defaultProfile from '/src/assets/images/mock-profile-img.jpg';
 
 function ProfileDetailPage() {
   const { linkId } = useParams();
   const [linkShopInfo, setLinkShopInfo] = useState();
-
-  const [metaImage] = useMetaImage(linkShopInfo);
 
   useEffect(() => {
     if (linkId) {
@@ -26,13 +22,6 @@ function ProfileDetailPage() {
 
   return (
     <>
-      <Helmet>
-        <meta
-          property="og:image"
-          // NOTE: 백엔드에서 메타데이터 불러올 수 있을 때, content={linkShopInfo?.products[0]?.imageUrl ?? '/src/assets/images/mock-profile-img.jpg'}
-          content={'/src/assets/images/mock-profile-img.jpg'}
-        />
-      </Helmet>
       <div css={marketBg} />
       <div css={layout}>
         <div css={containerBtnBack}>
@@ -64,7 +53,7 @@ function ProfileDetailPage() {
           </div>
           <div css={containerProfile}>
             <figure>
-              <img src={metaImage} alt="프로필 이미지" />
+              <img src={linkShopInfo?.shop.imageUrl ?? defaultProfile} alt="프로필 이미지" />
               <figcaption>
                 <p
                   css={css`
@@ -189,6 +178,14 @@ const containerIcon = css`
 const containerProfile = css`
   width: 100%;
   text-align: center;
+  
+  img {
+    object-fit: cover;
+    width: 8.4rem;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 8.4rem;
+  }
 `;
 
 const titleText = css`

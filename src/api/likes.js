@@ -18,8 +18,7 @@ export const likeData = async (linkId, isLikeClicked) => {
 
 export const likeHandler = async (linkId) => {
   try {
-    return (await axios.get(`https://linkshop-api.vercel.app/10-4/linkshops/${linkId}`)).data
-      .likes;
+    return (await axios.get(`https://linkshop-api.vercel.app/10-4/linkshops/${linkId}`)).data.likes;
   } catch (error) {
     console.log(error);
     return false;
