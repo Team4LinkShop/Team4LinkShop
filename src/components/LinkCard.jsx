@@ -105,7 +105,7 @@ const imgProduct = css `
   height: 95px;
   border: 0;
   border-radius: 15px;
-  background-color: #000000;
+  margin-right: 7px;
 `;
 
 export default LinkCard;
