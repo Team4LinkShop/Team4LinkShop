@@ -23,8 +23,8 @@ http://scripts.sil.org/OFL
   font-display: swap;
   src:
     local('Pretendard SemiBold'),
-    url(./assets/fonts/Pretendard-Semibold.woff2) format('woff2'),
-    url(./assets/fonts/Pretendard-Semibold.woff) format('woff');
+    url(./assets/fonts/Pretendard-SemiBold.woff2) format('woff2'),
+    url(./assets/fonts/Pretendard-SemiBold.woff) format('woff');
 }
 
 @font-face {

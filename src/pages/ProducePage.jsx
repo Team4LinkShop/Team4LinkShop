@@ -1,7 +1,7 @@
-import UserInformation from '../components/UserInformation.jsx';
-import ItemInformation from '../components/ItemInformation.jsx';
-import MyShoppingMall from '../components/MyShoppingMall.jsx';
-import CompleteButton from '../components/CompleteButton.jsx';
+import UserInformation from '../components/UserInformation';
+import ItemInformation from '../components/ItemInformation';
+import CompleteButton from '../components/CompleteButton';
+import MyShoppingMall from '../components/MyShoppingMall'
 import { useState } from 'react';
 import { css } from '@emotion/react';
 
